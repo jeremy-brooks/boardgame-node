@@ -1,0 +1,25 @@
+{
+  "name": "boardgame-node",
+  "version": "1.0.0",
+  "description": "basic mine sweeper style board game",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeremy-brooks/boardgame-node.git"
+  },
+  "author": "jeremybrooks321@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeremy-brooks/boardgame-node/issues"
+  },
+  "homepage": "https://github.com/jeremy-brooks/boardgame-node#readme",
+  "devDependencies": {
+    "assert": "^1.3.0"
+  }
+}
