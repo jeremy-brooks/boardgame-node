@@ -2,7 +2,7 @@
   "name": "boardgame-node",
   "version": "1.0.0",
   "description": "basic mine sweeper style board game",
-  "main": "index.js",
+  "main": "game.js",
   "directories": {
     "test": "test"
   },
