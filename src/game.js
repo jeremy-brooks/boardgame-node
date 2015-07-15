@@ -1,34 +1,16 @@
 var Player = require('../src/player.js').Player;
-var Square = require('../src/square.js').Square;
+var Board = require('../src/board.js').Board;
 
-var board = null;
 var player = null;
+var board = null;
 
 exports.reset = function(){
-    board = [[],[],[],[],[],[],[],[]];
-    //set up board
-    var rowCount = 0;
-    var hasMine = false;
-    var square = null;
     player = new Player();
-    for (var colIndex = 0, col = null; col = board[colIndex]; colIndex++){
-        while (rowCount < 8){
-            hasMine = !!Math.round(Math.random());
-            // if on the first square then put player there and override hasMine value
-            if (rowCount === 0 && colIndex === 0){
-                square = new Square(false, player);
-            } else {
-                square = new Square(hasMine);
-            }
-            col[rowCount] = square;
-            rowCount++;
-        }
-        rowCount = 0;
-    }
+    board = new Board(player);
 };
 
 exports.getBoardHeight = function () {
-    //assume this is a square s return length of first row as all are equal
+    //assume this is a square board so return length of first row
     return board[0].length;
 };
 
