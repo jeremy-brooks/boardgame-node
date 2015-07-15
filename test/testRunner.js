@@ -49,6 +49,29 @@ try {
     game.displayBoard();
     tearDown();
 
+    // moving left
+    setUp();
+    game.moveRight();
+    assert.equal(game.getPlayerPosition().col, expectedCol+1, "Moving player right increments thier col by 1");
+    game.moveLeft();
+    assert.equal(game.getPlayerPosition().col, expectedCol, "Moving the player left decrements thier col by 1");
+    game.displayBoard();
+    tearDown();
+
+    // moving down
+    setUp();
+    game.moveUp();
+    assert.equal(game.getPlayerPosition().row, expectedRow+1, "Moving player up increments their row by 1");
+    game.moveDown();
+    assert.equal(game.getPlayerPosition().row, expectedRow, "Moving player up decrements their row by 1");
+    game.displayBoard();
+    tearDown();
+
+    // land mines
+    setUp();
+    assert.equal(game.getActiveMines() > 0, true, "Game board contains some mines by default");
+    tearDown();
+
 } catch (e) {
     console.log(e);
     // throw again so build can fail on this

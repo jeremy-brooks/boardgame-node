@@ -11,9 +11,15 @@ exports.reset = function(){
     board = [[],[],[],[],[],[],[],[]];
     //set up board
     var rowCount = 0;
+    var hasMine = false;
     for (var colIndex = 0, col = null; col = board[colIndex]; colIndex++){
         while (rowCount < 8){
-            col[rowCount] = "[ ]";
+            hasMine = !!Math.round(Math.random());
+            if (hasMine){
+                col[rowCount] = "[X]";
+            } else {
+                col[rowCount] = "[ ]";
+            }
             rowCount++;
         }
         rowCount = 0;
@@ -62,8 +68,30 @@ exports.moveUp = function (){
     board[player.col][player.row] = player;
 };
 
+exports.moveDown = function (){
+    board[player.col][player.row] = "[-]";
+    player.row -= 1;
+    board[player.col][player.row] = player;
+};
+
 exports.moveRight = function(){
     board[player.col][player.row] = "[-]";
     player.col += 1;
     board[player.col][player.row] = player;
+}
+
+exports.moveLeft = function () {
+    board[player.col][player.row] = "[-]";
+    player.col -= 1;
+    board[player.col][player.row] = player;
+}
+
+exports.getActiveMines = function () {
+    var activeMineCount = 0;
+    for (var ci = 0, col; col = board[ci]; ci++){
+        for (var ri = 0, row; row = col[ri]; ri++){
+            if (row === "[X]") activeMineCount += 1;
+        }
+    }
+    return activeMineCount;
 }
