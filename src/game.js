@@ -71,6 +71,5 @@ exports.getStatus = function () {
 };
 
 exports.getSquareAt = function (coordinates) {
-    var square = board[coordinates.col][coordinates.row];
-    return square;
+    return board[coordinates.col][coordinates.row];
 };

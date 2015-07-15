@@ -4,4 +4,4 @@ exports.Player = function() {
     this.col = 0;
     this.lives = 2;
     this.graphic = "[P]";
-}
+};
