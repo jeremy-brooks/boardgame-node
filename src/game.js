@@ -1,25 +1,8 @@
+var Player = require('../src/player.js').Player;
+var Square = require('../src/square.js').Square;
+
 var board = null;
 var player = null;
-
-// player
-function Player() {
-    this.row = 0;
-    this.col = 0;
-    this.lives = 2;
-    this.graphic = "[P]";
-}
-
-// square
-function Square(hasMine, player) {
-    this.player = player || null;
-    this.hasMine = hasMine || false;
-    this.hasHit = false;
-    if (player) {
-        this.graphic = player.graphic;
-    } else {
-        this.graphic = (hasMine) ? "[X]" : "[ ]";
-    }
-}
 
 exports.reset = function(){
     board = [[],[],[],[],[],[],[],[]];
@@ -42,24 +25,24 @@ exports.reset = function(){
         }
         rowCount = 0;
     }
-}
+};
 
 exports.getBoardHeight = function () {
     //assume this is a square s return length of first row as all are equal
     return board[0].length;
-}
+};
 
 exports.getBoardWidth = function(){
     return board.length;
-}
+};
 
 exports.getPlayer = function(){
     return player;
-}
+};
 
 exports.displayBoard = function () {
     console.log(board);
-}
+};
 
 exports.moveUp = function (){
     board[player.col][player.row] = "[-]";
@@ -77,13 +60,13 @@ exports.moveRight = function(){
     board[player.col][player.row] = "[-]";
     player.col += 1;
     board[player.col][player.row] = player;
-}
+};
 
 exports.moveLeft = function () {
     board[player.col][player.row] = "[-]";
     player.col -= 1;
     board[player.col][player.row] = player;
-}
+};
 
 exports.getActiveMines = function () {
     var activeMineCount = 0;
@@ -93,7 +76,7 @@ exports.getActiveMines = function () {
         }
     }
     return activeMineCount;
-}
+};
 
 exports.getStatus = function () {
     var status = {
