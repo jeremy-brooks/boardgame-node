@@ -72,6 +72,16 @@ try {
     assert.equal(game.getActiveMines() > 0, true, "Game board contains some mines by default");
     tearDown();
 
+    // game status
+    setUp();
+    var gameStatus = game.getStatus();
+    assert.equal(gameStatus.player.col, 0, "Player is in first column");
+    assert.equal(gameStatus.player.row, 0, "Player is in first row");
+    assert.equal(gameStatus.player.lives, 2, "Player has 2 lives left");
+    assert.equal(gameStatus.isGameWon, false, "Game has not been won");
+    assert.equal(gameStatus.activeMines, game.getActiveMines(), "There are mines left");
+    tearDown();
+
 } catch (e) {
     console.log(e);
     // throw again so build can fail on this

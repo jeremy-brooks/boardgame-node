@@ -95,3 +95,13 @@ exports.getActiveMines = function () {
     }
     return activeMineCount;
 }
+
+exports.getStatus = function () {
+    var status = {
+        player: this.getPlayer(),
+        activeMines: this.getActiveMines(),
+        isGameWon: false
+    };
+    console.log(status);
+    return status;
+};
