@@ -35,8 +35,6 @@ npm install
 Running tests
 -------------
 
-Once you have Node installed, just clone this project and then you can test the code by running the following:
-
 ### Unit test suite
 
 ```
