@@ -9,3 +9,8 @@ exports.Square = function (hasMine, player) {
         this.graphic = (hasMine) ? "[X]" : "[ ]";
     }
 };
+
+this.Square.prototype.removePlayer = function () {
+    this.player = null;
+    this.graphic = "[-]";
+};

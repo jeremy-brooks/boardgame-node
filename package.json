@@ -4,10 +4,13 @@
   "description": "basic mine sweeper style board game",
   "main": "game.js",
   "directories": {
+    "src": "run",
     "test": "test"
   },
   "scripts": {
-    "test": "/usr/local/bin/node test/testRunner.js"
+    "play": "/usr/local/bin/node src/run.js",
+    "test": "/usr/local/bin/node test/testRunner.js",
+    "int-test": "/usr/local/bin/node test-integration/intTestRunner.js"
   },
   "repository": {
     "type": "git",

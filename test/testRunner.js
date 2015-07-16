@@ -83,6 +83,19 @@ assert.equal(square.hasMine, false, "First square never contains a mine");
 assert.equal(square.hasHit, false, "First square never has a mine so never records a hit");
 tearDown();
 
-game.displayBoard();
+console.log("test that starting a game resets player and board");
+setUp();
+game.moveUp();
+assert.equal(game.getPlayer().row, expectedRow + 1, "Moving player up increments their row by 1");
+game.moveDown();
+assert.equal(game.getPlayer().row, expectedRow, "Moving player up decrements their row by 1");
+game.start();
+gameStatus = game.getStatus();
+assert.equal(gameStatus.player.col, 0, "Player is in first column");
+assert.equal(gameStatus.player.row, 0, "Player is in first row");
+assert.equal(gameStatus.player.lives, 2, "Player has 2 lives left");
+assert.equal(gameStatus.isGameWon, false, "Game has not been won");
+assert.equal(gameStatus.activeMines, game.getActiveMines(), "There are mines left");
+tearDown();
 
 

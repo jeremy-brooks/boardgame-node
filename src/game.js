@@ -3,7 +3,11 @@ var Board = require('../src/board.js').Board;
 
 var player = null;
 var board = null;
+var isGameWon = false;
 
+exports.start = function (){
+    this.reset();
+}
 exports.reset = function(){
     player = new Player();
     board = new Board(player);
@@ -26,28 +30,40 @@ exports.displayBoard = function () {
     console.log(board);
 };
 
+exports.move = function (key) {
+    /*
+        TODO: handle mine hits
+     */
+    board[player.col][player.row].removePlayer();
+    if (key === "U") {
+        player.row += 1;
+    } else if (key === "D") {
+        player.row -= 1;
+    } else if (key === "L") {
+        player.col -= 1;
+    } else {
+        player.col += 1;
+    }
+    board[player.col][player.row].player = player;
+    if (player.row === this.getBoardHeight()-1) {
+        isGameWon = true;
+    }
+};
+
 exports.moveUp = function (){
-    board[player.col][player.row] = "[-]";
-    player.row += 1;
-    board[player.col][player.row] = player;
+    this.move("U")
 };
 
 exports.moveDown = function (){
-    board[player.col][player.row] = "[-]";
-    player.row -= 1;
-    board[player.col][player.row] = player;
+    this.move("D");
 };
 
 exports.moveRight = function(){
-    board[player.col][player.row] = "[-]";
-    player.col += 1;
-    board[player.col][player.row] = player;
+    this.move("R");
 };
 
 exports.moveLeft = function () {
-    board[player.col][player.row] = "[-]";
-    player.col -= 1;
-    board[player.col][player.row] = player;
+    this.move("L");
 };
 
 exports.getActiveMines = function () {
@@ -64,7 +80,7 @@ exports.getStatus = function () {
     var status = {
         player: this.getPlayer(),
         activeMines: this.getActiveMines(),
-        isGameWon: false
+        isGameWon: isGameWon
     };
     console.log(status);
     return status;
